@@ -19,6 +19,7 @@ abstract class  StoriesDatabase : RoomDatabase(){
             "baza.db"
         )
         .createFromAsset("baza.db")
+        .allowMainThreadQueries()
         .build()
     }
     abstract  fun dao() : StoriesDao

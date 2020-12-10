@@ -6,26 +6,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.ertekler.R
+import com.example.ertekler.data.StoriesDatabase
+import com.example.ertekler.data.dao.StoriesDao
+import com.example.ertekler.ui.gallery.GalleryViewModel
+import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
-    private lateinit var homeViewModel: HomeViewModel
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+    private val myAdapter = HomeListAdapter()
+    private lateinit var dao: StoriesDao
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        rvHome.adapter=myAdapter
+        rvHome.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
+        dao = StoriesDatabase.getInstance(requireContext()).dao()
+        setData()
+    }
+    private fun setData() {
+        myAdapter.models = dao.getAllTypes()
     }
 }
