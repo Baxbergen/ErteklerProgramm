@@ -9,7 +9,11 @@
         android:id="@+id/nav_home"
         android:name="com.example.ertekler.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_storyListFragment"
+            app:destination="@id/storyListFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -28,5 +32,16 @@
         <action
             android:id="@+id/action_nav_slideshow_to_nav_home"
             app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/storyListFragment"
+        android:name="com.example.ertekler.ui.stories.StoryListFragment"
+        android:label="StoryListFragment"
+        tools:layout="@layout/fragment_story_list"
+         >
+        <argument
+            android:name="storyType"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
 </navigation>

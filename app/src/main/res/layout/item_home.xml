@@ -3,7 +3,8 @@
     android:layout_width="350dp"
     android:layout_height="240dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:background="@drawable/back_shape">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivTheme"
@@ -11,8 +12,7 @@
         android:layout_height="180dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-    
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/tvTheme"
         android:layout_width="match_parent"
