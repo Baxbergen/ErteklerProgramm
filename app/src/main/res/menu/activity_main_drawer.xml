@@ -7,7 +7,13 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Qıyalıy ertekler" />
+            android:title="Bas bet" />
+
+        <item
+            android:id="@+id/qiyaliy_ertekler"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Qiyaliy ertekler" />
+
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"

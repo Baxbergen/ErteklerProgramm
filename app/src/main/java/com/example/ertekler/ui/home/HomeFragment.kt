@@ -1,31 +1,40 @@
 package com.example.ertekler.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.ertekler.R
+import com.example.ertekler.data.StoriesDatabase
+import com.example.ertekler.data.dao.StoriesDao
+import com.example.ertekler.data.model.StoryType
+import com.example.ertekler.ui.stories.StoryListFragment
+import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private val myAdapter = HomeListAdapter()
+    private lateinit var dao: StoriesDao
+    private lateinit var navController: NavController
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        rvHome.adapter=myAdapter
+        navController = Navigation.findNavController(view)
+        dao = StoriesDatabase.getInstance(requireContext()).dao()
+        myAdapter.setOnItemCLickListener(onClick)
+        setData()
+    }
+
+    private fun setData() {
+        myAdapter.models = dao.getAllTypes()
+    }
+
+    private val onClick = { storyType: StoryType ->
+        val action = HomeFragmentDirections.actionNavHomeToStoryListFragment(storyType.id)
+        navController.navigate(action)
     }
 }

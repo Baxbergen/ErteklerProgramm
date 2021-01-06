@@ -5,10 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.ertekler.data.dao.StoriesDao
-import com.example.ertekler.data.model.Stories
-import com.example.ertekler.data.model.Types
+import com.example.ertekler.data.model.Story
+import com.example.ertekler.data.model.StoryType
 
-@Database (entities = [Stories::class, Types::class],  version = 1)
+@Database (entities = [Story::class, StoryType::class],  version = 1)
 abstract class  StoriesDatabase : RoomDatabase(){
     companion object {
         private lateinit var INSTANCE: StoriesDatabase
@@ -19,6 +19,7 @@ abstract class  StoriesDatabase : RoomDatabase(){
             "baza.db"
         )
         .createFromAsset("baza.db")
+        .allowMainThreadQueries()
         .build()
     }
     abstract  fun dao() : StoriesDao
