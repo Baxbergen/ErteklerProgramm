@@ -7,10 +7,10 @@ import com.example.ertekler.data.model.StoryType
 
 @Dao
 interface StoriesDao{
-    @Query ("SELECT * FROM story")
+    @Query ("SELECT * FROM stories")
     fun getAllStories (): List<Story>
 
-    @Query("SELECT * FROM story WHERE type =:typeId")
+    @Query("SELECT * FROM stories WHERE type =:typeId")
     fun getStoriesByType(typeId: Int): List<Story>
 
     @Query ("SELECT * FROM types")

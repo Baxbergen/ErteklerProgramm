@@ -24,10 +24,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         rvHome.adapter=myAdapter
         navController = Navigation.findNavController(view)
-        rvHome.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
         dao = StoriesDatabase.getInstance(requireContext()).dao()
-        myAdapter.setOnItemCLickListener(onItemClick)
-        Log.d("TexnoPOS", "Fragment jaraldi")
+        myAdapter.setOnItemCLickListener(onClick)
         setData()
     }
 
@@ -35,12 +33,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         myAdapter.models = dao.getAllTypes()
     }
 
-    private val onItemClick: (type: StoryType) -> Unit = {
-        Log.d("TexnoPOS", "onItemClick isledi")
-        val bundle = Bundle()
-        bundle.putInt(StoryListFragment.STORY_TYPE, it.id)
-        val fragment = StoryListFragment()
-        fragment.arguments = bundle
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit()
+    private val onClick = { storyType: StoryType ->
+        val action = HomeFragmentDirections.actionNavHomeToStoryListFragment(storyType.id)
+        navController.navigate(action)
     }
 }

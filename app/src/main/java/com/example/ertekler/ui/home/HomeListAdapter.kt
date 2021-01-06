@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ertekler.R
+import com.example.ertekler.core.onClick
 import com.example.ertekler.data.model.Story
 import com.example.ertekler.data.model.StoryType
 import kotlinx.android.synthetic.main.item_home.view.*
@@ -24,9 +25,13 @@ class HomeListAdapter: RecyclerView.Adapter<HomeListAdapter.HomeListViewHolder>(
         this.onItemClick = onItemClick
     }
 
+
     inner class HomeListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun populateModel(storyType: StoryType){
             itemView.tvTheme.text = storyType.name
+            itemView.onClick {
+                onItemClick.invoke(storyType)
+            }
             val imageResName = "picture${storyType.id}"
             Glide
                 .with(itemView)
