@@ -6,37 +6,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_baseline_home_24"
             android:title="Bas bet" />
 
         <item
-            android:id="@+id/qiyaliy_ertekler"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Qiyaliy ertekler" />
-
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Turmıs ertekleri" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Haywanat haqqında ertekler" />
-
-        <item
             android:id="@+id/saylangan"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_bookmark_24"
             android:title="Saylanǵanlar" />
     </group>
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/sazlama"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_baseline_settings_24"
             android:title="Sazlamalar" />
         <item
             android:id="@+id/about"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_baseline_info_24"
             android:title="Haqqımızda" />
 
     </group>
