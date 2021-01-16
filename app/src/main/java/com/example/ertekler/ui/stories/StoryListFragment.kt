@@ -10,7 +10,10 @@ import com.example.ertekler.R
 import com.example.ertekler.core.addVerticalDivider
 import com.example.ertekler.data.StoriesDatabase
 import com.example.ertekler.data.model.Story
+import com.example.ertekler.data.model.StoryType
+import com.example.ertekler.ui.home.HomeFragmentDirections
 import kotlinx.android.synthetic.main.fragment_story_list.*
+import kotlinx.android.synthetic.main.item_story.*
 
 class StoryListFragment : Fragment(R.layout.fragment_story_list), StoryListView {
 
@@ -23,6 +26,10 @@ class StoryListFragment : Fragment(R.layout.fragment_story_list), StoryListView 
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         storyList.adapter = adapter
+        adapter.onItemClicked = {id ->
+            val action = StoryListFragmentDirections.actionStoryListFragmentToFullStoryFragment(id)
+            navController.navigate(action)
+        }
         storyList.addVerticalDivider(requireContext())
         val dao = StoriesDatabase.getInstance(requireContext()).dao()
         presenter = StoryListPresenter(this, dao)
@@ -33,4 +40,11 @@ class StoryListFragment : Fragment(R.layout.fragment_story_list), StoryListView 
     override fun setStories(stories: List<Story>) {
         adapter.models = stories
     }
+
+//    override fun storyItemClickListener(id: Int) {
+//        val action = StoryListFragmentDirections.actionStoryListFragmentToFullStoryFragment()
+//        navController.navigate(action)
+//    }
+
+
 }

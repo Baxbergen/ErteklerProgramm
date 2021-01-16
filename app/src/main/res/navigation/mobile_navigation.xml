@@ -16,33 +16,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.ertekler.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery">
-        <argument
-            android:name="typeID"
-            android:defaultValue="2"
-            app:argType="integer" />
-        <action
-            android:id="@+id/action_nav_gallery_to_storyListFragment"
-            app:destination="@id/storyListFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.ertekler.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" >
-        <argument
-            android:name="typeID"
-            app:argType="integer"
-            android:defaultValue="3" />
-        <action
-            android:id="@+id/action_nav_slideshow_to_storyListFragment"
-            app:destination="@id/storyListFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/storyListFragment"
         android:name="com.example.ertekler.ui.stories.StoryListFragment"
         android:label="StoryListFragment"
@@ -52,5 +25,17 @@
             android:name="storyType"
             app:argType="integer"
             android:defaultValue="1" />
+        <action
+            android:id="@+id/action_storyListFragment_to_fullStoryFragment"
+            app:destination="@id/fullStoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullStoryFragment"
+        android:name="com.example.ertekler.ui.fullStories.FullStoryFragment"
+        tools:layout="@layout/fragment_full_story"
+        android:label="FullStoryFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>

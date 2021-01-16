@@ -1,5 +1,6 @@
 package com.example.ertekler.data.dao
 
+import android.content.Context
 import androidx.room.Dao
 import androidx.room.Query
 import com.example.ertekler.data.model.Story
@@ -15,4 +16,7 @@ interface StoriesDao{
 
     @Query ("SELECT * FROM types")
     fun getAllTypes (): List<StoryType>
+
+    @Query ("SELECT * FROM stories WHERE id =:id")
+    fun getStoryById(id: Int): Story
 }
