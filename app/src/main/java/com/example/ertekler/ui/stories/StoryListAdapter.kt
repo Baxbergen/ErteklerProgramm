@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ertekler.R
 import com.example.ertekler.core.inflate
 import com.example.ertekler.data.model.Story
+import com.example.ertekler.data.model.StoryType
 import kotlinx.android.synthetic.main.item_story.view.*
 
 class StoryListAdapter : RecyclerView.Adapter<StoryListAdapter.StoryListViewHolder>() {
@@ -27,9 +28,14 @@ class StoryListAdapter : RecyclerView.Adapter<StoryListAdapter.StoryListViewHold
 
     override fun getItemCount(): Int = models.size
 
+    var onItemClicked: (id: Int) -> Unit = {}
+
     inner class StoryListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun populateModel(model: Story) {
-            itemView.storyName.text = model.storyName
+        fun populateModel(data: Story) {
+            itemView.storyName.text = data.storyName
+            itemView.setOnClickListener {
+                onItemClicked.invoke(data.id)
+            }
         }
     }
 }
