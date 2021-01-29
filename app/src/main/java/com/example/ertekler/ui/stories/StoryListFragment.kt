@@ -41,10 +41,5 @@ class StoryListFragment : Fragment(R.layout.fragment_story_list), StoryListView 
         adapter.models = stories
     }
 
-//    override fun storyItemClickListener(id: Int) {
-//        val action = StoryListFragmentDirections.actionStoryListFragmentToFullStoryFragment()
-//        navController.navigate(action)
-//    }
-
 
 }
