@@ -3,4 +3,7 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="playerColor">#038715</color>
+    <color name="contentColor">#B306D121</color>
+    <color name="contentFullStories">#D5D089</color>
 </resources>
