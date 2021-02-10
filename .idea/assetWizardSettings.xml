@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/keyboard_arrow_down/baseline_keyboard_arrow_down_24.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/bookmark_border/baseline_bookmark_border_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -34,7 +34,7 @@
                         <option name="values">
                           <map>
                             <entry key="opacityPercent" value="64" />
-                            <entry key="outputName" value="ic_baseline_keyboard_arrow_down_24" />
+                            <entry key="outputName" value="ic_baseline_bookmark_border_24" />
                             <entry key="sourceFile" value="D:\Ertekler\proekt" />
                           </map>
                         </option>
